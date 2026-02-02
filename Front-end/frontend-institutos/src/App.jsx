@@ -14,35 +14,38 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* 1. Ruta de Autenticación */}
-        <Route path="/login" element={<Login />} />
+        {/* 1. RUTAS ENMASCARADAS (Estilo "Card" centrada en PC, Full en Móvil) */}
+        <Route path="/login" element={
+          <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center">
+            <Login />
+          </div>
+        } />
 
-        {/* 2. Rutas de Registro (Envueltas en el Provider para no perder datos) */}
         <Route 
           path="/register/*" 
           element={
             <RegisterProvider>
-              <Routes>
-                <Route path="step-1" element={<RegisterStep1 />} />
-                <Route path="step-2" element={<RegisterStep2 />} />
-                <Route path="success" element={<RegisterStep3 />} />
-                {/* Redirección interna si entran solo a /register */}
-                <Route path="" element={<Navigate to="step-1" replace />} />
-              </Routes>
+              {/* Este div centra los pasos del registro en PC para que no se deformen */}
+              <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center">
+                <Routes>
+                  <Route path="step-1" element={<RegisterStep1 />} />
+                  <Route path="step-2" element={<RegisterStep2 />} />
+                  <Route path="success" element={<RegisterStep3 />} />
+                  <Route path="" element={<Navigate to="step-1" replace />} />
+                </Routes>
+              </div>
             </RegisterProvider>
           } 
         />
 
-        {/* 3. Ruta del Panel Principal (Post-Login) */}
+        {/* 2. RUTA DASHBOARD (Full Width - Sin contenedores que limiten) */}
         <Route path="/dashboard" element={<Dashboard />} />
 
-        {/* 4. Redirección por defecto al entrar a la página */}
+        {/* 3. Redirecciones y Errores */}
         <Route path="/" element={<Navigate to="/login" replace />} />
-
-        {/* 5. Manejo de Error 404 */}
         <Route path="*" element={
           <div className="flex flex-col items-center justify-center h-screen bg-slate-50 dark:bg-slate-900">
-            <h1 className="text-4xl font-bold text-primary">404</h1>
+            <h1 className="text-4xl font-bold text-[#136dec]">404</h1>
             <p className="text-slate-500">Página no encontrada</p>
           </div>
         } />
