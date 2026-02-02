@@ -1,10 +1,49 @@
 <!doctype html>
-<html lang="en">
+<html lang="es" class="light">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>frontend-institutos</title>
+    <title>SaaS Institutos</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#136dec",
+              "primary-dark": "#0e5bc4",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101822",
+              "surface-light": "#ffffff",
+              "surface-dark": "#1c2632",
+              "text-main": "#0d131b",
+              "text-secondary": "#4c6c9a",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            }
+          }
+        }
+      }
+    </script>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
